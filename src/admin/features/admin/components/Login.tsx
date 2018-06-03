@@ -5,6 +5,8 @@ import FormControl from '@material-ui/core/FormControl/FormControl'
 import InputLabel from '@material-ui/core/InputLabel/InputLabel'
 import Input from '@material-ui/core/Input/Input'
 import Button from '@material-ui/core/Button'
+import TransitionComeIn from '../../../shared/transitions/TransitionComeIn'
+import TransitionFadeIn from '../../../shared/transitions/TransitionFadeIn'
 
 const styles = (theme: Theme) => ({
   root: {
@@ -48,28 +50,35 @@ class Login extends React.Component<StyledProps> {
 
     return (
       <div>
-        <Card className={classes.root}>
-          <form onSubmit={this.onSubmit} className={classes.form}>
+        <TransitionComeIn height={50} duration={500}>
+          <Card className={classes.root}>
+            <form onSubmit={this.onSubmit} className={classes.form}>
 
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="wcp-login" error={hasError}>Логин</InputLabel>
-              <Input id="wcp-login" inputRef={ref => this.refLogin = ref} error={hasError}/>
-            </FormControl>
+              <TransitionFadeIn delay={400} duration={300}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="wcp-login" error={hasError}>Логин</InputLabel>
+                  <Input id="wcp-login" inputRef={ref => this.refLogin = ref} error={hasError}/>
+                </FormControl>
+              </TransitionFadeIn>
 
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="wcp-password" error={hasError}>Пароль</InputLabel>
-              <Input id="wcp-password" type={'password'} inputRef={ref => this.refPassword = ref} error={hasError}/>
-            </FormControl>
+              <TransitionFadeIn delay={600} duration={300}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="wcp-password" error={hasError}>Пароль</InputLabel>
+                  <Input id="wcp-password" type={'password'} inputRef={ref => this.refPassword = ref} error={hasError}/>
+                </FormControl>
+              </TransitionFadeIn>
 
-            <Button onClick={this.onSubmit}
-                    className={classes.button}
-                    variant="raised"
-                    color="primary">
-              Войти
-            </Button>
-
-          </form>
-        </Card>
+              <TransitionFadeIn delay={800} duration={300}>
+                <Button onClick={this.onSubmit}
+                        className={classes.button}
+                        variant="raised"
+                        color="primary">
+                  Войти
+                </Button>
+              </TransitionFadeIn>
+            </form>
+          </Card>
+        </TransitionComeIn>
       </div>
     )
   }

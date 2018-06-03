@@ -10,6 +10,6 @@ export interface IState {
 export const initialState: IState = {
   admin: {
     hasError: false,
-    user: { id: 1 },
+    user: undefined,
   },
 }
