@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { Theme, WithStyles, withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import Header from './Header'
-import Side from './Side'
+import SideContainer from '../containers/SideContainer'
+import Routes from './Routes'
+import TransitionPage from './TransitionPage'
 
 const styles = (theme: Theme) => ({
   root: {
@@ -32,14 +33,17 @@ class Main extends React.Component<StyledProps> {
     const { classes, onLogout } = this.props
 
     return (
-      <div className={classes.root}>
-        <Header onLogout={onLogout} />
-        <Side/>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Typography noWrap>{'Just a page, maybe dashboard'}</Typography>
-        </main>
-      </div>
+      <TransitionPage>
+        <div className={classes.root}>
+          <Header onLogout={onLogout} />
+          <SideContainer/>
+
+          <main className={classes.content}>
+            <div className={classes.toolbar}/>
+            <Routes/>
+          </main>
+        </div>
+      </TransitionPage>
     )
   }
 }

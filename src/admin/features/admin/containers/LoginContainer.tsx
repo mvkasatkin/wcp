@@ -4,7 +4,7 @@ import Login, { Props } from '../components/Login'
 import AdminService from '../services/AdminService'
 
 const mapStateToProps = (state: IState): Props => ({
-  hasError: state.admin.hasError,
+  hasError: state.auth.hasError,
   onSubmitLogin: AdminService.login.bind(AdminService),
 })
 

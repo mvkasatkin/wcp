@@ -1,15 +1,23 @@
+import navItems from '../config/navigation'
+
 export interface IState {
-  admin: {
+  auth: {
     hasError: boolean,
     user?: {
       id: number,
     },
   },
+  nav: {
+    items: NavItem[],
+  },
 }
 
 export const initialState: IState = {
-  admin: {
+  auth: {
     hasError: false,
-    user: undefined,
+    user: { id: 1 },
+  },
+  nav: {
+    items: navItems,
   },
 }
