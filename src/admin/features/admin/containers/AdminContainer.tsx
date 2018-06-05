@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { IState } from '../../../store/state'
 import Admin, { Props } from '../components/Admin'
+import adminService from '../services/AdminService'
 
 const mapStateToProps = (state: IState): Props => ({
   loggedIn: !!state.auth.user,
+  onLogout: adminService.logout.bind(adminService),
 })
 
-export default withRouter<any>(connect(mapStateToProps)(Admin))
+export default connect(mapStateToProps)(Admin)

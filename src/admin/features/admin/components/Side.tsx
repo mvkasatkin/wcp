@@ -5,26 +5,7 @@ import ListItem from '@material-ui/core/ListItem/ListItem'
 import { Theme, withStyles, WithStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse/Collapse'
 import Typography from '@material-ui/core/Typography/Typography'
-import { NavLink } from 'react-router-dom'
-
-const styles = (theme: Theme) => ({
-  paper: {
-    position: 'relative',
-    width: 240,
-  },
-  nested: {
-    paddingLeft: theme.spacing.unit * 6,
-  },
-  link: {
-    display: 'block',
-    textDecoration: 'none',
-    '&.active span': {
-      fontWeight: theme.typography.fontWeightMedium,
-      color: theme.palette.primary.main,
-    },
-  },
-  toolbar: theme.mixins.toolbar,
-})
+import { Link } from '@reach/router'
 
 export interface Props {
   items: NavItem[],
@@ -71,15 +52,37 @@ class Side extends React.Component<StyledProps> {
 
   renderChild (item: NavItem) {
     const { classes } = this.props
+    const isActive = ({ isPartiallyCurrent }: any) => isPartiallyCurrent
+      ? { className: classes.link + ' active' }
+      : { className: classes.link }
 
     return (
-      <NavLink exact to={item.route ? item.route.path : ''} className={classes.link} key={item.title}>
+      <Link to={item.route ? item.route.path : ''} getProps={isActive} key={item.title}>
         <ListItem button dense className={classes.nested}>
           <Typography component={'span'}>{item.title}</Typography>
         </ListItem>
-      </NavLink>
+      </Link>
     )
   }
 }
+
+const styles = (theme: Theme) => ({
+  paper: {
+    position: 'relative',
+    width: 240,
+  },
+  nested: {
+    paddingLeft: theme.spacing.unit * 6,
+  },
+  link: {
+    display: 'block',
+    textDecoration: 'none',
+    '&.active span': {
+      fontWeight: theme.typography.fontWeightMedium,
+      color: theme.palette.primary.main,
+    },
+  },
+  toolbar: theme.mixins.toolbar,
+})
 
 export default withStyles(styles as any)(Side)

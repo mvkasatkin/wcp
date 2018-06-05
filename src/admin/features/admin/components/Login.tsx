@@ -7,26 +7,6 @@ import Input from '@material-ui/core/Input/Input'
 import Button from '@material-ui/core/Button'
 import TransitionPage from './TransitionPage'
 
-const styles = (theme: Theme) => ({
-  root: {
-    margin: '150px auto 0 auto',
-    maxWidth: '400px',
-  },
-  form: {
-    padding: theme.spacing.unit * 3,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-end',
-  },
-  formControl: {
-    width: '100%',
-    margin: `${theme.spacing.unit}px 0`,
-  },
-  button: {
-    marginTop: theme.spacing.unit,
-  },
-})
-
 export type Props = {
   hasError: boolean,
   onSubmitLogin: (login: string, password: string) => void,
@@ -76,5 +56,25 @@ class Login extends React.Component<StyledProps> {
     )
   }
 }
+
+const styles = (theme: Theme) => ({
+  root: {
+    margin: '150px auto 0 auto',
+    maxWidth: '400px',
+  },
+  form: {
+    padding: theme.spacing.unit * 3,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+  },
+  formControl: {
+    width: '100%',
+    margin: `${theme.spacing.unit}px 0`,
+  },
+  button: {
+    marginTop: theme.spacing.unit,
+  },
+})
 
 export default withStyles(styles as any)(Login)

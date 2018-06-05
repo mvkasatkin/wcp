@@ -6,15 +6,6 @@ import { Theme, withStyles, WithStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton/IconButton'
 import { ExitToApp } from '@material-ui/icons'
 
-const styles = (theme: Theme) => ({
-  root: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  flex: {
-    flex: 1,
-  },
-})
-
 interface Props {
   onLogout: () => void
 }
@@ -33,5 +24,14 @@ const Header: React.StatelessComponent<StyledProps> = ({ classes, onLogout }) =>
     </Toolbar>
   </AppBar>
 )
+
+const styles = (theme: Theme) => ({
+  root: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  flex: {
+    flex: 1,
+  },
+})
 
 export default withStyles(styles as any)(Header)
